@@ -3,9 +3,11 @@ import SimpleLightbox from "simplelightbox";
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryEl = document.querySelector('.gallery');
+const cardsMarkup = createGalleryCardsMarkup(galleryItems);
 
-const cardsMarkup = galleryItems
-    .map(({ preview, original, description }) => {
+function createGalleryCardsMarkup(galleryItem) {
+    return galleryItem
+      .map(({ preview, original, description }) => {
         return `
             <a class="gallery__item" href="${original}">
                 <img class="gallery__image" src="${preview}" alt="${description}" />
@@ -13,10 +15,13 @@ const cardsMarkup = galleryItems
         `;
         })
     .join('');
+};
 
-galleryEl.insertAdjacentHTML('afterbegin', cardsMarkup);
+galleryEl.insertAdjacentHTML('beforeend', cardsMarkup);
 
-new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-});
+new SimpleLightbox('.gallery a',
+    {
+        captionsData: 'alt',
+        captionDelay: 250,
+    }
+);
