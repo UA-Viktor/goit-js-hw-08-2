@@ -12,11 +12,13 @@ function onPlay({seconds}) {
     localStorage.setItem(TIME, seconds);
 };
 
-setCurrentTime();
+player.setCurrentTime(localStorage.getItem(TIME) || 0);
 
-function setCurrentTime() {
-    if (!localStorage.getItem(TIME)) {
-        return;
-    };
-    player.setCurrentTime(localStorage.getItem(TIME));
-};
+// setCurrentTime();
+
+// function setCurrentTime() {
+//     if (!localStorage.getItem(TIME)) {
+//         return;
+//     };
+//     player.setCurrentTime(localStorage.getItem(TIME));
+// };
