@@ -12,4 +12,11 @@ function onPlay({seconds}) {
     localStorage.setItem(TIME, seconds);
 };
 
-player.setCurrentTime(localStorage.getItem(TIME) || 0);
+setCurrentTime();
+
+function setCurrentTime() {
+    if (!localStorage.getItem(CURRENT_TIME)) {
+        return;
+    };
+    player.setCurrentTime(localStorage.getItem(CURRENT_TIME));
+};
